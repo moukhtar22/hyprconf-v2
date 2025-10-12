@@ -22,20 +22,9 @@ options="$option1\n$option2"
 
 choice=$(echo -e "$options" | rofi -dmenu -replace -config ~/.config/rofi/themes/rofi-screenshots.rasi -i -no-show-icons -l 2 -width 30 -p)
 
-send_notification() {
-    local msg="$1"
-    notify-send -e "Taking Screenshot in" "$msg"
-    sleep 1
-    # pkill dunst
-    pkill swaync
-}
-
 case $choice in
     $option1)  # full area, 3 sec delay.
-        for time in 3 2 1; do
-            send_notification "$time"
-        done
-        sleep 1
+        sleep 0.5
         grimblast copysave screen "$temp_screenshot" && ss_sound && \
         satty --filename "$temp_screenshot" --output-filename "$save_dir/$save_file" --early-exit
         ;;
@@ -48,12 +37,12 @@ case $choice in
         print_error ;;
 esac
 
+# Satty saves directly to the final path, so we don't need to check for the temp file,
 # but we still need to remove it after satty has processed it.
 rm "$temp_screenshot"
 
 # Check if the final saved file exists
 if [ -f "$save_dir/$save_file" ] ; then
-    notify-send "Screenshot saved in" "$save_dir" -i "$save_dir/$save_file" -r 91190 -t 2200
+    notify-send "Screenshot saved in" "$save_dir" -i "$save_dir/$save_file" -r 91190 -t 5000
 fi
 
-swaync &

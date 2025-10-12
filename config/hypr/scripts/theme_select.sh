@@ -68,6 +68,10 @@ kill -SIGUSR1 $(pidof kitty)
 waybarTheme="$HOME/.config/waybar/colors/${theme}.css"
 ln -sf "$waybarTheme" "$HOME/.config/waybar/style/theme.css"
 
+# wlogout themes
+wlogoutTheme="$HOME/.config/wlogout/colors/${theme}.css"
+ln -sf "$wlogoutTheme" "$HOME/.config/wlogout/colors.css"
+
 # set swaync colors
 swayncTheme="$HOME/.config/swaync/colors/${theme}.css"
 [[ -n "$(command -v swaync)" ]] && ln -sf "$swayncTheme" "$HOME/.config/swaync/colors.css"

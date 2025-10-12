@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 iDIR="$HOME/.config/hypr/icons/vol"
@@ -22,21 +23,13 @@ get_icon() {
     fi
 }
 
-# Notify using dunst
-# notify_user() {
-#     if [[ "$(get_volume)" == " " ]]; then
-#         notify-send -a -r -h string:x-dunst-stack-tag:volume_notif -i "$(get_icon)" "Volume: Muted"
-#     else
-#         notify-send -a -r -h string:x-dunst-stack-tag:volume_notif -i "$(get_icon)" "Volume: $(get_volume)"
-#     fi
-# }
-
 # Notify using swaync
 notify_user() {
     if [[ "$(get_volume)" == "Muted" ]]; then
         notify-send -e -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume: Muted"
     else
-        notify-send -e -h int:value:"$(get_volume | sed 's/%//')" -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume: $(get_volume)"
+        # notify-send -e -h int:value:"$(get_volume | sed 's/%//')" -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume: $(get_volume)"
+        notify-send -e -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume: $(get_volume)"
     fi
 }
 

@@ -15,8 +15,8 @@
     // power menu ( universal )
     "custom/power_btn": {
         "format": "",
-        "on-click": "~/.config/hypr/scripts/powermenu.sh",
         "tooltip": false
+        "on-click": "wlogout -b 6 --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css",
     },
 
     "custom/notify": {

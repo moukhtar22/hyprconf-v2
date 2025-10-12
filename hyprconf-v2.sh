@@ -134,7 +134,6 @@ msg act "Now setting up the pre installed Hyprland configuration..."sleep 1
 mkdir -p ~/.config
 dirs=(
     btop
-    dunst
     fastfetch
     fish
     gtk-3.0
@@ -148,8 +147,10 @@ dirs=(
     qt5ct
     qt6ct
     rofi
+    satty
     swaync
     waybar
+    wlogout
     xfce4
     xsettingsd
     yazi
